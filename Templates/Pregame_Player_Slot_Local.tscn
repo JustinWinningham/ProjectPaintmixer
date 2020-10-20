@@ -1,0 +1,22 @@
+[gd_scene format=2]
+
+[node name="PregamePlayer" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = -834.0
+margin_bottom = -488.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PlayerStatusLabel" type="Label" parent="."]
+margin_right = 40.0
+margin_bottom = 14.0
+text = "Join?"
+
+[node name="DEBUGSTATUS" type="Label" parent="."]
+margin_left = 5.0
+margin_top = 28.0
+margin_right = 45.0
+margin_bottom = 42.0
+text = "Not Joined - Default State"

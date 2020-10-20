@@ -1,0 +1,54 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Scripts/ButtonChangeScene.gd" type="Script" id=1]
+[ext_resource path="res://Templates/Pregame_Player_Slot_Local.tscn" type="PackedScene" id=2]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Button" type="Button" parent="."]
+margin_left = 3.0
+margin_top = 3.0
+margin_right = 61.0
+margin_bottom = 38.0
+text = "Back"
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+scenePath = "res://Scenes/MainMenu.tscn"
+
+[node name="Players" type="Node" parent="."]
+
+[node name="PregamePlayer1" parent="Players" instance=ExtResource( 2 )]
+margin_left = 98.0
+margin_top = 76.0
+margin_right = -649.0
+margin_bottom = -411.0
+
+[node name="PregamePlayer2" parent="Players" instance=ExtResource( 2 )]
+margin_left = 610.0
+margin_top = 105.0
+margin_right = -154.0
+margin_bottom = -382.0
+
+[node name="PregamePlayer3" parent="Players" instance=ExtResource( 2 )]
+margin_left = 100.0
+margin_top = 396.0
+margin_right = -628.0
+margin_bottom = -100.0
+
+[node name="PregamePlayer4" parent="Players" instance=ExtResource( 2 )]
+margin_left = 619.0
+margin_top = 405.0
+margin_right = -51.0
+margin_bottom = -26.0
+
+[node name="Button2" type="Button" parent="."]
+margin_left = 307.0
+margin_top = 535.0
+margin_right = 634.0
+margin_bottom = 586.0
+text = "S T A R T"
+__meta__ = {
+"_edit_use_anchors_": false
+}
