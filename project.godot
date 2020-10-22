@@ -19,10 +19,16 @@ config/name="Paintmixer Poc"
 run/main_scene="res://Scenes/Splash_Screens/Splash_GODOT.tscn"
 config/icon="res://Art/icon.png"
 
+[autoload]
+
+GLOBAL="*res://Scripts/GLOBAL.gd"
+
 [display]
 
 window/size/width=1920
 window/size/height=1080
+window/size/resizable=false
+window/size/borderless=true
 
 [input]
 

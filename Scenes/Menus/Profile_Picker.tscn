@@ -1,0 +1,60 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Scripts/Profile_Picker.gd" type="Script" id=1]
+[ext_resource path="res://Scripts/ActiveProfileLabel.gd" type="Script" id=2]
+[ext_resource path="res://Scripts/NewProfileButton.gd" type="Script" id=3]
+
+[node name="Profile_Picker" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="NewProfileBtn" type="Button" parent="."]
+margin_right = 105.0
+margin_bottom = 22.0
+text = "New Profile"
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="DeleteProfileBtn" type="Button" parent="."]
+margin_left = 130.108
+margin_right = 235.108
+margin_bottom = 22.0
+text = "Delete Profile"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ScrollContainer" type="ScrollContainer" parent="."]
+margin_left = 8.0
+margin_top = 30.0
+margin_right = 444.0
+margin_bottom = 502.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ScrollContainer"]
+margin_right = 200.0
+margin_bottom = 300.0
+rect_min_size = Vector2( 200, 300 )
+custom_constants/separation = 5
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CurrentProfile" type="Label" parent="."]
+margin_left = 325.692
+margin_top = 53.6652
+margin_right = 525.692
+margin_bottom = 67.6652
+text = "CURRENT PROFILE: DEFAULT"
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}

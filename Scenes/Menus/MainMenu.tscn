@@ -20,7 +20,7 @@ script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
-scenePath = "res://Scenes/Pregame_Lobby_SP.tscn"
+scenePath = "res://Scenes/Menus/Pregame_Lobby_Local.tscn"
 
 [node name="QuitButton" type="Button" parent="."]
 margin_left = 447.0
@@ -29,3 +29,18 @@ margin_right = 604.0
 margin_bottom = 521.0
 text = "Quit"
 script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button" type="Button" parent="."]
+margin_left = 415.031
+margin_top = 379.072
+margin_right = 629.031
+margin_bottom = 414.072
+text = "Profiles"
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+scenePath = "res://Scenes/Menus/Profile_Picker.tscn"
