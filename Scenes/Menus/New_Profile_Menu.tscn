@@ -1,0 +1,34 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Scripts/NewProfileMenu.gd" type="Script" id=1]
+
+[node name="New_Profile_Menu" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+scenePath = "res://Scenes/Menus/Profile_Picker.tscn"
+
+[node name="Name_Input" type="TextEdit" parent="."]
+margin_left = 45.0
+margin_top = 40.0
+margin_right = 390.0
+margin_bottom = 119.0
+text = "Your Name here!"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Create_Profile_Button" type="Button" parent="."]
+margin_left = 517.0
+margin_top = 298.0
+margin_right = 762.0
+margin_bottom = 371.0
+text = "C R E A T E"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="text_changed" from="Name_Input" to="." method="_on_Name_Input_text_changed"]
+[connection signal="pressed" from="Create_Profile_Button" to="." method="_on_Create_Profile_Button_pressed"]

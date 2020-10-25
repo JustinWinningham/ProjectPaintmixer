@@ -2,7 +2,7 @@
 
 [ext_resource path="res://Scripts/Profile_Picker.gd" type="Script" id=1]
 [ext_resource path="res://Scripts/ActiveProfileLabel.gd" type="Script" id=2]
-[ext_resource path="res://Scripts/NewProfileButton.gd" type="Script" id=3]
+[ext_resource path="res://Scripts/ButtonChangeScene.gd" type="Script" id=3]
 
 [node name="Profile_Picker" type="Control"]
 anchor_right = 1.0
