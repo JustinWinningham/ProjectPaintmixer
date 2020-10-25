@@ -19,6 +19,7 @@ script = ExtResource( 3 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+scenePath = "res://Scenes/Menus/New_Profile_Menu.tscn"
 
 [node name="DeleteProfileBtn" type="Button" parent="."]
 margin_left = 130.108

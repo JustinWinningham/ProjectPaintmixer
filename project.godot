@@ -21,7 +21,8 @@ config/icon="res://Art/icon.png"
 
 [autoload]
 
-GLOBAL="*res://Scripts/GLOBAL.gd"
+GLOBAL="*res://Scripts/Autoloads/GLOBAL.gd"
+PROFILEHANDLER="*res://Scripts/Autoloads/ProfileHandler.gd"
 
 [display]
 

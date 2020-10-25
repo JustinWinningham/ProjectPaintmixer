@@ -6,10 +6,6 @@ var STATE
 
 var did_find_settings = false
 var profile_loaded = false
-# Holds all our profile names
-#var profile_strings = []
-# Default player name
-# These stats and related save functions will be moved to the profile section - we will save generic settings here instead
 var default_profile = ""
 var generic_setting_1 = "gs1"
 var generic_setting_2  = "gs2"

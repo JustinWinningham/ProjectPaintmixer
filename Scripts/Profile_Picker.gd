@@ -5,7 +5,7 @@ var currentProfile = null
 var profile_list = ButtonGroup.new()
 
 func _ready():
-	loadable_profiles = find_prof_files()
+	loadable_profiles = PROFILEHANDLER.find_prof_files()
 	var num_profiles = loadable_profiles.size()
 	if num_profiles > 0:
 		if GLOBAL.profile_loaded:
@@ -20,19 +20,20 @@ func _ready():
 
 func handle_listButton_press(Tuxt):
 	currentProfile = Tuxt
+	GLOBAL.playerName = PROFILEHANDLER.profileName
 	GLOBAL.default_profile = Tuxt
 	GLOBAL.profile_loaded = true
 	pass
 
-func find_prof_files():
-	var prof_files = []
-	var dir = Directory.new()
-	dir.open("user://")
-	dir.list_dir_begin()
-	while true:
-		var file = dir.get_next()
-		if file == "":
-			break
-		elif file.ends_with(".profile"):
-			prof_files.append(file)
-	return prof_files
+#func find_prof_files():
+#	var prof_files = []
+#	var dir = Directory.new()
+#	dir.open("user://")
+#	dir.list_dir_begin()
+#	while true:
+#		var file = dir.get_next()
+#		if file == "":
+#			break
+#		elif file.ends_with(".profile"):
+#			prof_files.append(file)
+#	return prof_files

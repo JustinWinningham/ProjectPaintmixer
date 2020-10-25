@@ -1,17 +1,29 @@
 extends Control
 
+var version = 0.1
 var profileName = null
 var gs1 = null
 var gs2 = null
+var hatUnlocks = [1,0,0,0,0,0,0,0,0,0,0]
+var hat = 1
+var eyes = 1
+var nose = 1
+var body = 1
 
 func _ready():
 	pass
 	
 func form_save():
 	var save_dict = {
+		"version" : version,
 		"profileName" : profileName,
 		"gs1" : gs1,
-		"gs2" :gs2
+		"gs2" : gs2,
+		"hatUnlocks" : hatUnlocks,
+		"hat" : hat,
+		"eyes" : eyes,
+		"nose" : nose,
+		"body" : body
 	}
 	return save_dict
 	
