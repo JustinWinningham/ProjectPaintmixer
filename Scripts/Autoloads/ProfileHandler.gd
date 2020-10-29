@@ -1,51 +1,44 @@
-extends Control
+extends Node
 
-var version = 0.1
-var profileName = null
-var gs1 = null
-var gs2 = null
-var hatUnlocks = [1,0,0,0,0,0,0,0,0,0,0]
-var hat = 1
-var eyes = 1
-var nose = 1
-var body = 1
+#onready var Profiles = preload("res://Scripts/Classes/Profile.gd")
+
+#var saveVersion = 0.1
+#var profileName = null
+#var gs1 = null
+#var gs2 = null
+#var hatUnlocks = [1,0,0,0,0,0,0,0,0,0,0]
+#var hat = 1
+#var eyes = 1
+#var nose = 1
+#var body = 1
+
+var p1Profile
+var p2Profile
+var p3Profile
+var p4Profile
+
+const maxHats = 11
+const maxEyes = 8
+const maxNose = 4
+const maxBody = 4
+
+var profile_currently_handling = 1
+
 
 func _ready():
-	pass
+	p1Profile = Profile.new()
+	p2Profile = Profile.new()
+	p3Profile = Profile.new()
+	p4Profile = Profile.new()
 	
-func form_save():
-	var save_dict = {
-		"version" : version,
-		"profileName" : profileName,
-		"gs1" : gs1,
-		"gs2" : gs2,
-		"hatUnlocks" : hatUnlocks,
-		"hat" : hat,
-		"eyes" : eyes,
-		"nose" : nose,
-		"body" : body
-	}
-	return save_dict
-	
-func save_profile(profile):
-	var save_file = File.new()
-	save_file.open(str("user://", profile, ".profile"), File.WRITE)
-	save_file.store_var(form_save())
-	save_file.close()
-	return true
+#	if(GLOBAL.default_profile != ""):
+#		print("Profile Handler loading default profile specified by GLOBAL")
+#		# Load the data from the settings file into the p1profile handler slot
+#		p1Profile.load_from_file(GLOBAL.default_profile)
+#	else:
+#		print("Profile Handler didnt find a default profile to load from GLOBAL, assuming default values")
+#	pass
 
-func load_profile(profile):
-	var save_file = File.new()
-	if not save_file.file_exists(str("user://", profile, ".profile")):
-		return false
-	
-	save_file.open(str("user://", profile, ".profile"), File.READ)
-	var profile_data = {}
-	profile_data = save_file.get_var()
-	save_file.close()
-	for i in profile_data:
-		set(i, profile_data[i])
-	return true
 
 func find_prof_files():
 	var prof_files = []

@@ -1,15 +1,16 @@
 extends Control
 
 var loadable_profiles = null
-var currentProfile = null
+#var currentMainProfile = null
 var profile_list = ButtonGroup.new()
 
 func _ready():
+	print("Searching for existing profiles")
 	loadable_profiles = PROFILEHANDLER.find_prof_files()
 	var num_profiles = loadable_profiles.size()
 	if num_profiles > 0:
-		if GLOBAL.profile_loaded:
-			currentProfile = GLOBAL.default_profile
+		print("Profiles found!")
+		print("Populating profile list")
 		for i in num_profiles:
 			var button = Button.new()
 			button.set_size(Vector2(200,40))
@@ -19,21 +20,9 @@ func _ready():
 	pass
 
 func handle_listButton_press(Tuxt):
-	currentProfile = Tuxt
-	GLOBAL.playerName = PROFILEHANDLER.profileName
-	GLOBAL.default_profile = Tuxt
-	GLOBAL.profile_loaded = true
-	pass
-
-#func find_prof_files():
-#	var prof_files = []
-#	var dir = Directory.new()
-#	dir.open("user://")
-#	dir.list_dir_begin()
-#	while true:
-#		var file = dir.get_next()
-#		if file == "":
-#			break
-#		elif file.ends_with(".profile"):
-#			prof_files.append(file)
-#	return prof_files
+	# If Mouse or controller 0: default to profile 1
+	# Right now, only one player, so we can just assume its for P1
+	PROFILEHANDLER.p1Profile.load_from_file(Tuxt)
+	# If controller 1, use profile 2
+	# If controller 2, profile 3
+	# If controller 3, profile 4

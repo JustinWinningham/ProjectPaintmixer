@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Scripts/Profile_Picker.gd" type="Script" id=1]
 [ext_resource path="res://Scripts/ActiveProfileLabel.gd" type="Script" id=2]
 [ext_resource path="res://Scripts/ButtonChangeScene.gd" type="Script" id=3]
+[ext_resource path="res://Scripts/DeleteProfileBtn.gd" type="Script" id=4]
 
 [node name="Profile_Picker" type="Control"]
 anchor_right = 1.0
@@ -21,11 +22,24 @@ __meta__ = {
 }
 scenePath = "res://Scenes/Menus/New_Profile_Menu.tscn"
 
+[node name="BackButton" type="Button" parent="."]
+margin_left = 259.565
+margin_top = 1.88776
+margin_right = 364.565
+margin_bottom = 23.8878
+text = "Back"
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+scenePath = "res://Scenes/Menus/MainMenu.tscn"
+
 [node name="DeleteProfileBtn" type="Button" parent="."]
 margin_left = 130.108
 margin_right = 235.108
 margin_bottom = 22.0
 text = "Delete Profile"
+script = ExtResource( 4 )
 __meta__ = {
 "_edit_use_anchors_": false
 }

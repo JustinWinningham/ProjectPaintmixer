@@ -5,20 +5,17 @@ enum GAMESTATE {IDLE, ENTERSCENE, LEAVESCENE, POURING, MIXING, WIN, LOSE}
 var STATE
 
 var did_find_settings = false
-var profile_loaded = false
-var default_profile = ""
+#var profile_loaded = false
+#var default_profile = ""
 var generic_setting_1 = "gs1"
 var generic_setting_2  = "gs2"
 
-var playerName = "Painter"
-
 func _ready():
 	STATE = GAMESTATE.IDLE
-	print("GLOBAL Loaded")
+	print("GLOBAL Loaded, attempting to load settings...")
 	if load_settings():
 		did_find_settings = true
-	else:
-		print("Unable to load settings!")
+		print("Settings loaded successfully!")
 	pass
 
 func _process(delta):
@@ -27,7 +24,7 @@ func _process(delta):
 
 func form_save():
 	var save_dict = {
-		"default_profile" : default_profile,
+#		"default_profile" : default_profile,
 		"generic_setting_1" : generic_setting_1,
 		"generic_setting_2" :generic_setting_2
 	}
@@ -43,16 +40,16 @@ func save_settings():
 func load_settings():
 	var save_file = File.new()
 	if not save_file.file_exists(str("user://settings.txt")):
+		print("Unable to find existing settings file")
 		return false
-	
 	save_file.open(str("user://settings.txt"), File.READ)
-	var profile_data = {}
-	profile_data = save_file.get_var()
+	var settings_data = {}
+	settings_data = save_file.get_var()
 	save_file.close()
 	# This loop explained: For each line in the save file (remember that one line is one variable)
 	# set a matching variable (by name) to the value of that dic pair in this script.
 	# This is why our save_dict in the form_save() function requires the name to match
 	# the name to the variable EXACTLY, despite being a string
-	for i in profile_data:
-		set(i, profile_data[i])
+	for i in settings_data:
+		set(i, settings_data[i])
 	return true
