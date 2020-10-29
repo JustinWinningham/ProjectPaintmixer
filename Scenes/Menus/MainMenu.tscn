@@ -1,11 +1,13 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://Scripts/ButtonChangeScene.gd" type="Script" id=1]
 [ext_resource path="res://Scripts/QuitGame.gd" type="Script" id=2]
+[ext_resource path="res://Scripts/MainMenuController.gd" type="Script" id=3]
 
 [node name="MainMenu" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+script = ExtResource( 3 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -33,7 +35,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Button" type="Button" parent="."]
+[node name="ProfilesButton" type="Button" parent="."]
 margin_left = 415.031
 margin_top = 379.072
 margin_right = 629.031
@@ -44,3 +46,48 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 scenePath = "res://Scenes/Menus/Profile_Picker.tscn"
+
+[node name="DBL1" type="Label" parent="."]
+anchor_right = 0.008
+anchor_bottom = 0.013
+margin_left = 132.031
+margin_top = 149.881
+margin_right = 252.671
+margin_bottom = 172.841
+text = "test"
+
+[node name="DBL2" type="Label" parent="."]
+anchor_right = 0.008
+anchor_bottom = 0.013
+margin_left = 131.401
+margin_top = 166.26
+margin_right = 252.041
+margin_bottom = 189.22
+text = "test"
+
+[node name="DBL3" type="Label" parent="."]
+anchor_right = 0.008
+anchor_bottom = 0.013
+margin_left = 130.771
+margin_top = 183.269
+margin_right = 251.411
+margin_bottom = 206.229
+text = "test"
+
+[node name="DBL4" type="Label" parent="."]
+anchor_right = 0.008
+anchor_bottom = 0.013
+margin_left = 130.771
+margin_top = 199.018
+margin_right = 251.411
+margin_bottom = 221.978
+text = "test"
+
+[node name="DBL5" type="Label" parent="."]
+anchor_right = 0.008
+anchor_bottom = 0.013
+margin_left = 130.771
+margin_top = 216.027
+margin_right = 251.411
+margin_bottom = 238.987
+text = "test"

@@ -1,0 +1,195 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Scripts/NewProfileMenu.gd" type="Script" id=1]
+[ext_resource path="res://Art/icon.png" type="Texture" id=2]
+
+[node name="New_Profile_Menu" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+scenePath = "res://Scenes/Menus/Profile_Picker.tscn"
+
+[node name="Name_Input" type="TextEdit" parent="."]
+margin_left = 90.7622
+margin_top = 138.049
+margin_right = 430.762
+margin_bottom = 188.049
+text = "Your Name here!"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Create_Profile_Button" type="Button" parent="."]
+margin_left = 102.688
+margin_top = 863.115
+margin_right = 347.688
+margin_bottom = 936.115
+text = "C R E A T E"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Hat_Selector" type="Node2D" parent="."]
+position = Vector2( 35, 234 )
+
+[node name="Hat_Left_Button" type="Button" parent="Hat_Selector"]
+margin_left = 22.0
+margin_top = 35.0
+margin_right = 87.0
+margin_bottom = 99.0
+text = "<"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Hat_Right_Button" type="Button" parent="Hat_Selector"]
+margin_left = 344.0
+margin_top = 40.0
+margin_right = 409.0
+margin_bottom = 104.0
+text = ">"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Hat_Label" type="Label" parent="Hat_Selector"]
+margin_left = 122.0
+margin_top = 26.0
+margin_right = 332.0
+margin_bottom = 109.0
+text = "test"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Hat_Sprite" type="Sprite" parent="Hat_Selector"]
+position = Vector2( 218.5, 76 )
+scale = Vector2( 3.39062, 1 )
+texture = ExtResource( 2 )
+
+[node name="Eye_Selector" type="Node2D" parent="."]
+position = Vector2( 38.1748, 369.301 )
+
+[node name="Eye_Left_Button" type="Button" parent="Eye_Selector"]
+margin_left = 22.0
+margin_top = 35.0
+margin_right = 87.0
+margin_bottom = 99.0
+text = "<"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Eye_Right_Button" type="Button" parent="Eye_Selector"]
+margin_left = 344.0
+margin_top = 40.0
+margin_right = 409.0
+margin_bottom = 104.0
+text = ">"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Eye_Label" type="Label" parent="Eye_Selector"]
+margin_left = 122.0
+margin_top = 26.0
+margin_right = 332.0
+margin_bottom = 109.0
+text = "test"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Eye_Sprite" type="Sprite" parent="Eye_Selector"]
+position = Vector2( 218.5, 76 )
+scale = Vector2( 3.39062, 1 )
+texture = ExtResource( 2 )
+
+[node name="Nose_Selector" type="Node2D" parent="."]
+position = Vector2( 31.937, 519.238 )
+
+[node name="Nose_Left_Button" type="Button" parent="Nose_Selector"]
+margin_left = 22.0
+margin_top = 35.0
+margin_right = 87.0
+margin_bottom = 99.0
+text = "<"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Nose_Right_Button" type="Button" parent="Nose_Selector"]
+margin_left = 344.0
+margin_top = 40.0
+margin_right = 409.0
+margin_bottom = 104.0
+text = ">"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Nose_Label" type="Label" parent="Nose_Selector"]
+margin_left = 122.0
+margin_top = 26.0
+margin_right = 332.0
+margin_bottom = 109.0
+text = "test"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Nose_Sprite" type="Sprite" parent="Nose_Selector"]
+position = Vector2( 218.5, 76 )
+scale = Vector2( 3.39062, 1 )
+texture = ExtResource( 2 )
+
+[node name="Body_Selector" type="Node2D" parent="."]
+position = Vector2( 32.5244, 662.937 )
+
+[node name="Body_Left_Button" type="Button" parent="Body_Selector"]
+margin_left = 22.0
+margin_top = 35.0
+margin_right = 87.0
+margin_bottom = 99.0
+text = "<"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Body_Right_Button" type="Button" parent="Body_Selector"]
+margin_left = 344.0
+margin_top = 40.0
+margin_right = 409.0
+margin_bottom = 104.0
+text = ">"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Body_Label" type="Label" parent="Body_Selector"]
+margin_left = 122.0
+margin_top = 26.0
+margin_right = 332.0
+margin_bottom = 109.0
+text = "test"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Body_Sprite" type="Sprite" parent="Body_Selector"]
+position = Vector2( 218.5, 76 )
+scale = Vector2( 3.39062, 1 )
+texture = ExtResource( 2 )
+[connection signal="text_changed" from="Name_Input" to="." method="_on_Name_Input_text_changed"]
+[connection signal="pressed" from="Create_Profile_Button" to="." method="_on_Create_Profile_Button_pressed"]
+[connection signal="pressed" from="Hat_Selector/Hat_Left_Button" to="." method="_on_Hat_Left_Button_pressed"]
+[connection signal="pressed" from="Hat_Selector/Hat_Right_Button" to="." method="_on_Hat_Right_Button_pressed"]
+[connection signal="pressed" from="Eye_Selector/Eye_Left_Button" to="." method="_on_Eye_Left_Button_pressed"]
+[connection signal="pressed" from="Eye_Selector/Eye_Right_Button" to="." method="_on_Eye_Right_Button_pressed"]
+[connection signal="pressed" from="Nose_Selector/Nose_Left_Button" to="." method="_on_Nose_Left_Button_pressed"]
+[connection signal="pressed" from="Nose_Selector/Nose_Right_Button" to="." method="_on_Nose_Right_Button_pressed"]
+[connection signal="pressed" from="Body_Selector/Body_Left_Button" to="." method="_on_Body_Left_Button_pressed"]
+[connection signal="pressed" from="Body_Selector/Body_Right_Button" to="." method="_on_Body_Right_Button_pressed"]
