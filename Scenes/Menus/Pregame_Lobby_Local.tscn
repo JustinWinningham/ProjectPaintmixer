@@ -16,7 +16,7 @@ script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
-scenePath = "res://Scenes/MainMenu.tscn"
+scenePath = "res://Scenes/Menus/MainMenu.tscn"
 
 [node name="Players" type="Node" parent="."]
 
@@ -31,18 +31,21 @@ margin_left = 610.0
 margin_top = 105.0
 margin_right = -154.0
 margin_bottom = -382.0
+playerNumber = 2
 
 [node name="PregamePlayer3" parent="Players" instance=ExtResource( 2 )]
 margin_left = 100.0
 margin_top = 396.0
 margin_right = -628.0
 margin_bottom = -100.0
+playerNumber = 3
 
 [node name="PregamePlayer4" parent="Players" instance=ExtResource( 2 )]
 margin_left = 619.0
 margin_top = 405.0
 margin_right = -51.0
 margin_bottom = -26.0
+playerNumber = 4
 
 [node name="PlayButton" type="Button" parent="."]
 margin_left = 307.0
@@ -54,4 +57,4 @@ script = ExtResource( 3 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
-scenePath = "res://Templates/Local_Player_Picker.tscn"
+scenePath = "res://Scenes/Game_Boards/LocalPlayBoard.tscn"

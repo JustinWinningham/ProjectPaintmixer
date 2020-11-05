@@ -1,14 +1,11 @@
 extends Node
 
-# game state machine
 enum GAMESTATE {IDLE, ENTERSCENE, LEAVESCENE, POURING, MIXING, WIN, LOSE}
 var STATE
-
 var did_find_settings = false
-#var profile_loaded = false
-#var default_profile = ""
 var generic_setting_1 = "gs1"
 var generic_setting_2  = "gs2"
+
 
 func _ready():
 	STATE = GAMESTATE.IDLE
@@ -18,24 +15,27 @@ func _ready():
 		print("Settings loaded successfully!")
 	pass
 
+
 func _process(delta):
 	randomize()
 	pass
 
+
 func form_save():
 	var save_dict = {
-#		"default_profile" : default_profile,
 		"generic_setting_1" : generic_setting_1,
 		"generic_setting_2" :generic_setting_2
 	}
 	return save_dict
-	
+
+
 func save_settings():
 	var save_file = File.new()
 	save_file.open(str("user://settings.txt"), File.WRITE)
 	save_file.store_var(form_save())
 	save_file.close()
 	return true
+
 
 func load_settings():
 	var save_file = File.new()

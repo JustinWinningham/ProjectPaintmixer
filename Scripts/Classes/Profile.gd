@@ -50,7 +50,6 @@ func save():
 func load_from_file(location):
 	print("Attempting to load from: " + location)
 	var save_file = File.new()
-#	if not save_file.file_exists(str("user://", profileName, ".profile")):
 	if not save_file.file_exists(str("user://", location)):
 		print("Unable to find desired profile, aborting")
 		print(str("user://", location, ".profile"))
@@ -63,7 +62,6 @@ func load_from_file(location):
 	# Add version checker here
 	for i in profile_data:
 		set(i, profile_data[i])
-#		print(str("Loading Data, assigning ", profile_data[i], " to ", i))
 	return true
 
 

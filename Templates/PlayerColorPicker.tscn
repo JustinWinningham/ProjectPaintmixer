@@ -1,0 +1,68 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Scripts/PlayerColorPicker.gd" type="Script" id=1]
+
+[sub_resource type="Theme" id=1]
+
+[node name="PlayerColorPicker" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -0.94397
+margin_top = 0.236816
+margin_right = -0.94397
+margin_bottom = 0.236816
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PickedColorSquare" type="ColorRect" parent="."]
+margin_right = 308.0
+margin_bottom = 40.0
+color = Color( 0.847059, 0.278431, 0.278431, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorPicker" type="ColorPicker" parent="PickedColorSquare"]
+margin_left = 4.0
+margin_top = 44.0
+margin_right = 312.0
+margin_bottom = 456.0
+theme = SubResource( 1 )
+edit_alpha = false
+presets_enabled = false
+presets_visible = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PlayerName" type="Label" parent="PickedColorSquare"]
+margin_right = 200.0
+margin_bottom = 30.0
+text = "NAME"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PlayerRoundScore" type="Label" parent="PickedColorSquare"]
+margin_left = 200.0
+margin_top = -30.0
+margin_right = 300.0
+text = "ROUND SCORE"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PlayerTotalScore" type="Label" parent="PickedColorSquare"]
+margin_left = 200.0
+margin_right = 300.0
+margin_bottom = 30.0
+text = "TOTAL SCORE"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="RoundScoreTimer" type="Timer" parent="."]
+[connection signal="color_changed" from="PickedColorSquare/ColorPicker" to="." method="_on_ColorPicker_color_changed"]
+[connection signal="timeout" from="RoundScoreTimer" to="." method="_on_RoundScoreTimer_timeout"]

@@ -1,12 +1,84 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=3 format=2]
 
-[ext_resource path="res://Templates/Local_Player_Picker.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Templates/PlayerColorPicker.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Scripts/LocalPlayController.gd" type="Script" id=2]
 
 [node name="LocalPlayBoard" type="Node2D"]
+script = ExtResource( 2 )
 
-[node name="Control" parent="." instance=ExtResource( 1 )]
+[node name="CP1" parent="." instance=ExtResource( 1 )]
 anchor_top = 1.0
-margin_left = 214.258
-margin_top = 418.028
-margin_right = 214.258
-margin_bottom = 418.028
+margin_left = 50.0
+margin_top = 780.0
+margin_right = 50.0
+margin_bottom = 780.0
+
+[node name="CP2" parent="." instance=ExtResource( 1 )]
+anchor_top = 1.0
+anchor_right = 0.0
+margin_left = 550.0
+margin_top = 780.0
+margin_right = 550.0
+margin_bottom = 780.0
+pickedColor = Color( 0.466667, 0.192157, 0.192157, 1 )
+playerNumber = 2
+
+[node name="CP3" parent="." instance=ExtResource( 1 )]
+anchor_top = 1.0
+margin_left = 1050.0
+margin_top = 780.0
+margin_right = 1050.0
+margin_bottom = 780.0
+pickedColor = Color( 0.466667, 0.192157, 0.192157, 1 )
+playerNumber = 3
+
+[node name="CP4" parent="." instance=ExtResource( 1 )]
+anchor_top = 1.0
+margin_left = 1550.0
+margin_top = 780.0
+margin_right = 1550.0
+margin_bottom = 780.0
+pickedColor = Color( 0.466667, 0.192157, 0.192157, 1 )
+playerNumber = 4
+
+[node name="DEBUG_LABEL" type="Label" parent="."]
+margin_left = 598.008
+margin_top = 317.692
+margin_right = 779.008
+margin_bottom = 422.692
+text = "TEST: DEFAULT"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="StateTimer" type="Timer" parent="."]
+
+[node name="TIMER_LABEL" type="Label" parent="."]
+margin_left = 576.651
+margin_top = 395.113
+margin_right = 669.651
+margin_bottom = 470.113
+text = "TIMER"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ROUND_LABEL" type="Label" parent="."]
+margin_left = 557.963
+margin_top = 491.221
+margin_right = 773.963
+margin_bottom = 566.221
+text = "ROUND #"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PaintBucket" type="ColorRect" parent="."]
+margin_left = 1225.24
+margin_top = 266.214
+margin_right = 1437.24
+margin_bottom = 444.214
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="timeout" from="StateTimer" to="." method="_on_StateTimer_timeout"]
