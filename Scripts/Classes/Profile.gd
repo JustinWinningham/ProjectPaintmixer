@@ -8,11 +8,19 @@ var profileSettings
 var hatUnlocks
 var characterOutfit
 
+# Stats
+var stat_GamesPlayed = 0
+var stat_RoundsPlayed = 0
+var stat_GameWins = 0
+var stat_RoundWins = 0
+var stat_AverageAccuracy = 0 # aka round score
+var stat_PerfectGuesses = 0
+
 func _init():
-	self.saveVersion = 0.1
+	self.saveVersion = 0.2
 	self.profileName = "default"
 	self.profileSettings = []
-	self.hatUnlocks = [1,0,0,0,0,0,0,0,0,0,0]
+	self.hatUnlocks = [1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
 	self.characterOutfit = [1,1,1,1]
 
 
@@ -71,7 +79,15 @@ func clean():
 	for i in hatUnlocks:
 		hatUnlocks[i] = 0
 	hatUnlocks[0] = 1
+	for i in characterOutfit:
+		characterOutfit[i] = 0
 	profileSettings = []
+	stat_GamesPlayed = 0
+	stat_RoundsPlayed = 0
+	stat_GameWins = 0
+	stat_RoundWins = 0
+	stat_AverageAccuracy = 0 # aka round score
+	stat_PerfectGuesses = 0
 
 
 func delete():
@@ -86,10 +102,60 @@ func _form_save():
 		"profileName" : profileName,
 		"profileSettings" : profileSettings,
 		"hatUnlocks" : hatUnlocks,
-		"characterOutfit" : characterOutfit
+		"characterOutfit" : characterOutfit,
+		"stat_GamesPlayed" : stat_GamesPlayed,
+		"stat_RoundsPlayed" : stat_RoundsPlayed,
+		"stat_GameWins" : stat_GameWins,
+		"stat_RoundWins" : stat_RoundWins,
+		"stat_AverageAccuracy" : stat_AverageAccuracy,
+		"stat_PerfectGuesses" : stat_PerfectGuesses
 	}
 	return save_dict
 
 
+# Converts an old save version to a new save version
 func _convert_save(oldData, desiredVersion):
 	pass
+
+
+# Called at the end of each game
+# didwin - bool : true if player won the game, false if they tied or lost
+func updateStats_GameOver(didWin: bool):
+	stat_GamesPlayed += 1
+	if didWin:
+		stat_GameWins += 1
+	save()
+
+
+func updateStats_RoundOver(didWin: bool, roundScore: int):
+	stat_RoundsPlayed += 1
+	if stat_RoundsPlayed > 10:
+		hatUnlocks[7] = 1
+	if stat_RoundsPlayed > 100:
+		hatUnlocks[8] = 1
+	if stat_RoundsPlayed > 500:
+		hatUnlocks[9] = 1
+	if stat_RoundsPlayed > 1000:
+		hatUnlocks[10] = 1
+	if stat_RoundsPlayed > 5000:
+		hatUnlocks[11] = 1
+	if stat_RoundsPlayed > 10000:
+		hatUnlocks[12] = 1
+	if didWin:
+		stat_RoundWins += 1
+		if stat_RoundWins > 50:
+			hatUnlocks[2] = 1 # unlock 50 round wins hat
+		if stat_RoundWins > 100:
+			hatUnlocks[3] = 1 # unlock 100 round wins hat
+		if stat_RoundWins > 500:
+			hatUnlocks[4] = 1 # unlock 500 round wins hat
+		if stat_RoundWins > 1000:
+			hatUnlocks[5] = 1 # unlock 1000 round wins hat
+		if stat_RoundWins > 5000:
+			hatUnlocks[6] = 1 # unlock 5000 round wins hat
+	if roundScore == 765:
+		stat_PerfectGuesses += 1
+		hatUnlocks[1] = 1 # unlock perfect guess hat
+	stat_AverageAccuracy = (stat_RoundsPlayed * stat_AverageAccuracy + roundScore) / (stat_RoundsPlayed + 1)
+	# Check for average score hat unlock (later on)
+	save()

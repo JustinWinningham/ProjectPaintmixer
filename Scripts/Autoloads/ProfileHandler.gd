@@ -10,7 +10,7 @@ const maxEyes = 8
 const maxNose = 4
 const maxBody = 4
 
-var profile_currently_handling = 1
+#var profile_currently_handling = 1
 
 
 func _ready():

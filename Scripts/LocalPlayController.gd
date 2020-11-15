@@ -14,6 +14,18 @@ var randGreen = 0
 var addedRed = 0
 var addedBlue = 0
 var addedGreen = 0
+var addedWhite = 0
+var addedBlack = 0
+
+var pit = 0
+var rRed = 0
+var rBlue = 0
+var rGreen = 0
+
+var p1
+var p2
+var p3
+var p4
 
 var resultColor
 
@@ -35,14 +47,18 @@ func _process(delta):
 # While I work on the basic functionality, I will keep at just one player, so don't have to deal with this... yet
 func _assignPlayers():
 	# Would be cleaner to store as a small array insted of like this
-	if !DATABANK.isP4Active:
-		$CP4.visible = false
-	if !DATABANK.isP3Active:
-		$CP3.visible = false
-	if !DATABANK.isP2Active:
-		$CP2.visible = false
-	if !DATABANK.isP1Active:
-		$CP1.visible = false
+	if DATABANK.isP4Active:
+		$CP4.visible = true
+		p4 = PROFILEHANDLER.p4Profile
+	if DATABANK.isP3Active:
+		$CP3.visible = true
+		p3 = PROFILEHANDLER.p3Profile
+	if DATABANK.isP2Active:
+		$CP2.visible = true
+		p2 = PROFILEHANDLER.p2Profile
+	if DATABANK.isP1Active:
+		$CP1.visible = true
+		p1 = PROFILEHANDLER.p1Profile
 
 
 # Updates that only need to be calculated during a change in game state should go here
@@ -68,6 +84,7 @@ func _on_StateTimer_timeout():
 		$StateTimer.start(DATABANK.pourTime)
 		return
 	if currentState == GAMESTATE.POURING:
+		# Add random paint here
 		currentState = GAMESTATE.CAPPING
 		$DEBUG_LABEL.text = "Capping"
 		$StateTimer.start(DATABANK.capTime)
@@ -80,19 +97,46 @@ func _on_StateTimer_timeout():
 	if currentState == GAMESTATE.MIXING:
 		currentState = GAMESTATE.REVEALING
 		$DEBUG_LABEL.text = "Revealing"
+		_pickAddedValues()
+		$PaintBucket.color.r8 = rRed
+		$PaintBucket.color.g8 = rGreen
+		$PaintBucket.color.b8 = rBlue
 		$StateTimer.start(DATABANK.revealTime)
 		return
 	if currentState == GAMESTATE.REVEALING:
 		roundNumber += 1
-		# TODO: UnFugly
+		var p1Score = _calculateScore($CP1.get_Picked_Colors())
+		var p2Score = _calculateScore($CP2.get_Picked_Colors())
+		var p3Score = _calculateScore($CP3.get_Picked_Colors())
+		var p4Score = _calculateScore($CP4.get_Picked_Colors())
+		var winningPlayer = 1
+		# TODO: Calculate winning player
+#		if p1Score > p2Score || !DATABANK.isP2Active): # if player 1 > player 2, or if player 2 isnt playing...
+#			if p1Score > p3Score || !DATABANK.isP3Active):
+#				if p1Score > p4Score || !DATABANK.isP4Active):
+#					winningPlayer = 1
+		
+		var updateWins = false
+		if (DATABANK.activePlayers > 1): # update stats if more than one player
+			updateWins = true
+			
+		# TODO: UnFugly and make calls to profiles to update stats
 		if $CP1.visible:
-			$CP1.show_Round_Score(5, _calculateScore($CP1.get_Picked_Colors()))
+			$CP1.show_Round_Score(5, p1Score)
+			if updateWins:
+				p1.stats_roundOver()
 		if $CP2.visible:
-			$CP2.show_Round_Score(5, _calculateScore($CP2.get_Picked_Colors()))
+			$CP2.show_Round_Score(5, p2Score)
+			if updateWins:
+				pass
 		if $CP3.visible:
-			$CP3.show_Round_Score(5, _calculateScore($CP3.get_Picked_Colors()))
+			$CP3.show_Round_Score(5, p3Score)
+			if updateWins:
+				pass
 		if $CP4.visible:
-			$CP4.show_Round_Score(5, _calculateScore($CP4.get_Picked_Colors()))
+			$CP4.show_Round_Score(5, p4Score)
+			if updateWins:
+				pass
 		if roundNumber > DATABANK.numRounds:
 			currentState = GAMESTATE.GAMEWIN
 			$DEBUG_LABEL.text = "Game Over!"
@@ -114,7 +158,6 @@ func _on_StateTimer_timeout():
 		return
 	if currentState == GAMESTATE.GAMEWIN:
 		# At this point, we would save all player statistic before leaving the scene
-		
 		# Reset all players to inactive base state to prevent errors
 		DATABANK.isP1Active = false
 		DATABANK.isP2Active = false
@@ -124,17 +167,13 @@ func _on_StateTimer_timeout():
 
 
 func _calculateScore(colorValArr):
-	var pickedRed = colorValArr[0]
-	var pickedBlue = colorValArr[1]
-	var pickedGreen = colorValArr[2]
-	
-	var scoreRed = abs(colorValArr[0] - randRed)
-	var scoreBlue = abs(colorValArr[1] - randBlue)
-	var scoreGreen = abs(colorValArr[2] - randGreen)
+	var scoreRed = abs(colorValArr[0] - rRed)
+	var scoreBlue = abs(colorValArr[1] - rBlue)
+	var scoreGreen = abs(colorValArr[2] - rGreen)
 	
 	var roundScore = 765 - stepify(scoreRed + scoreBlue + scoreGreen, 1.0)
-	
 	return roundScore
+
 
 func _pickBaseColor():
 	rng.randomize()
@@ -146,7 +185,70 @@ func _pickBaseColor():
 	print(randBlue)
 	print(randGreen)
 	baseColor = Color(randRed, randBlue, randGreen)
-#		$PaintBucket.color = baseColor
 	$PaintBucket.color.r8 = randRed
 	$PaintBucket.color.b8 = randBlue
 	$PaintBucket.color.g8 = randGreen
+	pit += randRed + randBlue + randGreen
+
+
+func _pickAddedValues():
+	rng.randomize()
+	# Note, these number represent volumes of a pure color
+	addedRed = rng.randf_range(0, GLOBAL.max_add_volume)
+	addedBlue = rng.randf_range(0, GLOBAL.max_add_volume)
+	addedGreen = rng.randf_range(0, GLOBAL.max_add_volume)
+	addedBlack = rng.randf_range(0, GLOBAL.max_add_volume)
+	addedWhite = rng.randf_range(0, GLOBAL.max_add_volume)
+	
+	pit = randRed + randBlue + randGreen + addedRed + addedBlue + addedGreen + addedWhite + addedBlack
+	
+	var ratioRed = (randRed + addedRed + addedWhite) / pit
+	var ratioBlue = (randBlue + addedBlue + addedWhite) / pit
+	var ratioGreen = (randGreen + addedGreen + addedWhite) / pit
+	
+	rRed = int(round(ratioRed * 255))
+	rBlue = int(round(ratioBlue * 255))
+	rGreen = int(round(ratioGreen * 255))
+	resultColor = Color(rRed, rGreen, rBlue)
+	return resultColor
+	
+#	ex 2: VALIDATED CORRECT - DO NOT DELETE THIS COMMENT
+#
+#0,0,0 (pit size 100) (black start)
+#add 25 red
+#25,0,0 (pit size 125)
+#add 30 white
+#55,30,30 (pit size 155)
+#add 50 blue
+#55,30,80 (pit size 205)
+#
+#RC: 55 / 205 = .268 * 255 = 68.34 --> 68
+#GC: 30 / 205 = .146 * 255 = 37.23 --> 37
+#BC: 80 / 205 = .390 * 255 = 99.51 --> 100
+
+	print("Added color values: ")
+	print("Red: " + addedRed)
+	print("Blue:" + addedBlue)
+	print("Green: " + addedGreen)
+	print("White: " + addedWhite)
+	print("Black: " + addedBlack)
+	
+
+func _addRed():
+	pass
+
+
+func _addBlue():
+	pass
+
+
+func _addGreen():
+	pass
+
+
+func _addWhite():
+	pass
+
+
+func _addBlack():
+	pass

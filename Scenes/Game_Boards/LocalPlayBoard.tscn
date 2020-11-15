@@ -7,6 +7,7 @@
 script = ExtResource( 2 )
 
 [node name="CP1" parent="." instance=ExtResource( 1 )]
+visible = false
 anchor_top = 1.0
 margin_left = 50.0
 margin_top = 780.0
@@ -14,6 +15,7 @@ margin_right = 50.0
 margin_bottom = 780.0
 
 [node name="CP2" parent="." instance=ExtResource( 1 )]
+visible = false
 anchor_top = 1.0
 anchor_right = 0.0
 margin_left = 550.0
@@ -24,6 +26,7 @@ pickedColor = Color( 0.466667, 0.192157, 0.192157, 1 )
 playerNumber = 2
 
 [node name="CP3" parent="." instance=ExtResource( 1 )]
+visible = false
 anchor_top = 1.0
 margin_left = 1050.0
 margin_top = 780.0
@@ -33,6 +36,7 @@ pickedColor = Color( 0.466667, 0.192157, 0.192157, 1 )
 playerNumber = 3
 
 [node name="CP4" parent="." instance=ExtResource( 1 )]
+visible = false
 anchor_top = 1.0
 margin_left = 1550.0
 margin_top = 780.0
@@ -73,11 +77,50 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="deltaR" type="Label" parent="."]
+margin_left = 1214.49
+margin_top = 63.8252
+margin_right = 1270.49
+margin_bottom = 83.8252
+text = "deltaR"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="deltaB" type="Label" parent="."]
+margin_left = 1381.95
+margin_top = 65.0945
+margin_right = 1438.95
+margin_bottom = 88.0945
+text = "deltaB"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="deltaG" type="Label" parent="."]
+margin_left = 1302.49
+margin_top = 63.8252
+margin_right = 1355.49
+margin_bottom = 83.8252
+text = "deltaG"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="PaintBucket" type="ColorRect" parent="."]
 margin_left = 1225.24
 margin_top = 266.214
 margin_right = 1437.24
 margin_bottom = 444.214
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AddedColor" type="ColorRect" parent="."]
+margin_left = 1289.85
+margin_top = 96.3118
+margin_right = 1367.85
+margin_bottom = 154.312
 __meta__ = {
 "_edit_use_anchors_": false
 }
