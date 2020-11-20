@@ -22,7 +22,7 @@ script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
-scenePath = "res://Scenes/Menus/Profile_Picker_Main.tscn"
+scenePath = "res://Scenes/Menus/Pregame_Lobby_Local.tscn"
 
 [node name="QuitButton" type="Button" parent="."]
 margin_left = 447.0
@@ -45,7 +45,7 @@ script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
-scenePath = "res://Scenes/Menus/Profile_Picker.tscn"
+scenePath = "res://Scenes/Menus/Profile_Picker_Main.tscn"
 
 [node name="DBL1" type="Label" parent="."]
 anchor_right = 0.008

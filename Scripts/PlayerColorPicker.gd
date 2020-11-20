@@ -3,10 +3,21 @@ extends Control
 export(Color) var pickedColor
 export(int) var playerNumber = 1
 
+onready var PlayerName = $PickedColorSquare/PlayerName
+
 var playerScore = 0
 
 func _ready():
 	$PickedColorSquare/PlayerRoundScore.visible = false
+	match playerNumber:
+			1:
+				PlayerName.text = PROFILEHANDLER.p1Profile.getName()
+			2:
+				PlayerName.text = PROFILEHANDLER.p2Profile.getName()
+			3:
+				PlayerName.text = PROFILEHANDLER.p3Profile.getName()
+			4:
+				PlayerName.text = PROFILEHANDLER.p4Profile.getName()
 
 func _on_ColorPicker_color_changed(color):
 	$PickedColorSquare.color = color

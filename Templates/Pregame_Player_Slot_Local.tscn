@@ -34,4 +34,16 @@ icon = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="ScrollContainer" type="ScrollContainer" parent="."]
+visible = false
+margin_left = 133.672
+margin_top = 48.389
+margin_right = 243.672
+margin_bottom = 205.389
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ScrollContainer"]
 [connection signal="pressed" from="JoinButton" to="." method="_on_JoinButton_pressed"]

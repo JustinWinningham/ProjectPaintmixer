@@ -25,10 +25,10 @@ __meta__ = {
 }
 
 [node name="ColorPicker" type="ColorPicker" parent="PickedColorSquare"]
-margin_left = 4.0
-margin_top = 44.0
-margin_right = 312.0
-margin_bottom = 456.0
+margin_left = 8.0
+margin_top = 48.0
+margin_right = 316.0
+margin_bottom = 460.0
 theme = SubResource( 1 )
 edit_alpha = false
 presets_enabled = false
