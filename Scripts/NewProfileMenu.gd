@@ -84,7 +84,7 @@ func _on_Nose_Right_Button_pressed():
 func _on_Body_Left_Button_pressed():
 	if body == 0:
 		return
-	body = body + 1
+	body = body - 1
 	$Body_Selector/Body_Label.text = str(body + 1, "/", PROFILEHANDLER.maxBody + 1)
 
 

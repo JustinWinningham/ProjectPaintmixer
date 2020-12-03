@@ -17,12 +17,16 @@ func _on_JoinButton_pressed():
 		match playerNumber:
 			1:
 				DATABANK.isP1Active = false
+				DATABANK.activePlayers -= 1
 			2:
 				DATABANK.isP2Active = false
+				DATABANK.activePlayers -= 1
 			3:
 				DATABANK.isP3Active = false
+				DATABANK.activePlayers -= 1
 			4:
 				DATABANK.isP4Active = false
+				DATABANK.activePlayers -= 1
 	else:
 		$DEBUGSTATUS.text = "Ready!"
 		_showProfiles()
@@ -38,15 +42,19 @@ func handle_listButton_press(Tuxt):
 			1:
 				PROFILEHANDLER.p1Profile = targetProfile
 				DATABANK.isP1Active = true
+				DATABANK.activePlayers += 1
 			2:
 				PROFILEHANDLER.p2Profile = targetProfile
 				DATABANK.isP2Active = true
+				DATABANK.activePlayers += 1
 			3:
 				PROFILEHANDLER.p3Profile = targetProfile
 				DATABANK.isP3Active = true
+				DATABANK.activePlayers += 1
 			4:
 				PROFILEHANDLER.p4Profile = targetProfile
 				DATABANK.isP4Active = true
+				DATABANK.activePlayers += 1
 	$ScrollContainer.visible = false
 	pass
 

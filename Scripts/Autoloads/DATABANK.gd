@@ -1,6 +1,6 @@
 extends Node
 
-var activePlayers = 1
+var activePlayers = 0
 var isP1Active = false
 var isP2Active = false
 var isP3Active = false

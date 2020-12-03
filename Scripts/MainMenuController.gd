@@ -9,9 +9,6 @@ func _ready():
 	$DBL3.text = str("Eyes: ", p1Body[1]) 
 	$DBL4.text = str("Nose: ", p1Body[2])
 	$DBL5.text = str("Body: ", p1Body[3])
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
+	$DBL6.text = str("Hat Unlocks: ", str(PROFILEHANDLER.p1Profile.hatUnlocks))
+	$DBL7.text = str("Rounds Played: ", str(PROFILEHANDLER.p1Profile.getStat_RoundsPlayed()))
+	$DBL8.text = str("Average Round Score: ", str(PROFILEHANDLER.p1Profile.getStat_AverageScore()))

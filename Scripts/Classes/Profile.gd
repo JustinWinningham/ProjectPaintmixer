@@ -30,11 +30,14 @@ func unlock_hat(index):
 			return
 	hatUnlocks[index] = 1
 
+
 func setName(name):
 	self.profileName = name
 
+
 func getName():
 	return self.profileName
+
 
 func setCustomization(hat,eyes,nose,body):
 	self.characterOutfit[0] = hat
@@ -47,13 +50,35 @@ func getCustomizations():
 	return self.characterOutfit
 
 
+func getUnlockedHats():
+	var unKlocks = "["
+	for i in hatUnlocks:
+		unKlocks += str(hatUnlocks[i]) + ", "
+	unKlocks.erase(unKlocks.length() - 1, 1)
+	unKlocks += "]"
+	return unKlocks
+
+
+func getStat_RoundsPlayed():
+	return stat_RoundsPlayed
+
+
+func getStat_AverageScore():
+	return stat_AverageAccuracy
+
+
 func save():
 	var save_file = File.new()
 	save_file.open(str("user://", profileName, ".profile"), File.WRITE)
-	save_file.store_var(_form_save())
+	var saveData = _form_save()
+	save_file.store_var(saveData)
 	save_file.close()
 	return true
 
+
+func mock_update():
+	pass
+	
 
 func load_from_file(location):
 	print("Attempting to load from: " + location)
@@ -78,7 +103,7 @@ func clean():
 	setName("default")
 	for i in hatUnlocks:
 		hatUnlocks[i] = 0
-	hatUnlocks[0] = 1
+	unlock_hat(1)
 	for i in characterOutfit:
 		characterOutfit[i] = 0
 	profileSettings = []
@@ -128,34 +153,36 @@ func updateStats_GameOver(didWin: bool):
 
 
 func updateStats_RoundOver(didWin: bool, roundScore: int):
-	stat_RoundsPlayed += 1
-	if stat_RoundsPlayed > 10:
-		hatUnlocks[7] = 1
-	if stat_RoundsPlayed > 100:
-		hatUnlocks[8] = 1
-	if stat_RoundsPlayed > 500:
-		hatUnlocks[9] = 1
-	if stat_RoundsPlayed > 1000:
-		hatUnlocks[10] = 1
-	if stat_RoundsPlayed > 5000:
-		hatUnlocks[11] = 1
-	if stat_RoundsPlayed > 10000:
-		hatUnlocks[12] = 1
 	if didWin:
 		stat_RoundWins += 1
 		if stat_RoundWins > 50:
-			hatUnlocks[2] = 1 # unlock 50 round wins hat
+			unlock_hat(2)
 		if stat_RoundWins > 100:
-			hatUnlocks[3] = 1 # unlock 100 round wins hat
+			unlock_hat(3) # unlock 100 round wins hat
 		if stat_RoundWins > 500:
-			hatUnlocks[4] = 1 # unlock 500 round wins hat
+			unlock_hat(4) # unlock 500 round wins hat
 		if stat_RoundWins > 1000:
-			hatUnlocks[5] = 1 # unlock 1000 round wins hat
+			unlock_hat(5) # unlock 1000 round wins hat
 		if stat_RoundWins > 5000:
-			hatUnlocks[6] = 1 # unlock 5000 round wins hat
+			unlock_hat(6) # unlock 5000 round wins hat
 	if roundScore == 765:
 		stat_PerfectGuesses += 1
-		hatUnlocks[1] = 1 # unlock perfect guess hat
+		unlock_hat(1) # unlock perfect guess hat
 	stat_AverageAccuracy = (stat_RoundsPlayed * stat_AverageAccuracy + roundScore) / (stat_RoundsPlayed + 1)
-	# Check for average score hat unlock (later on)
+	stat_RoundsPlayed += 1
+	if stat_RoundsPlayed > 10:
+		unlock_hat(7)
+	if stat_RoundsPlayed > 100:
+		unlock_hat(8)
+	if stat_RoundsPlayed > 500:
+		unlock_hat(9)
+	if stat_RoundsPlayed > 1000:
+		unlock_hat(10)
+	if stat_RoundsPlayed > 5000:
+		unlock_hat(11)
+	if stat_RoundsPlayed > 10000:
+		unlock_hat(12)
+	# Check for average score hat unlock
+	if stat_AverageAccuracy > 730 && stat_RoundsPlayed > 50:
+		unlock_hat(13)
 	save()

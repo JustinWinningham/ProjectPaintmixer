@@ -122,21 +122,30 @@ func _on_StateTimer_timeout():
 			
 		# TODO: UnFugly and make calls to profiles to update stats
 		if $CP1.visible:
-			$CP1.show_Round_Score(5, p1Score)
+			print("P1 Visible")
+			$CP1.show_Round_Score(5, p1Score) # 5 = seconds to display round score "+513"
 			if updateWins:
-				p1.stats_roundOver()
+				print("Updating P1 Wins")
+				print ("1 == " + str(winningPlayer) + ", " + str(p1Score))
+				p1.updateStats_RoundOver(1 == winningPlayer, p1Score)
 		if $CP2.visible:
 			$CP2.show_Round_Score(5, p2Score)
 			if updateWins:
-				pass
+				print("Updating P2 Wins")
+				print ("1 == " + str(winningPlayer) + ", " + str(p2Score))
+				p2.updateStats_RoundOver(2 == winningPlayer, p1Score)
 		if $CP3.visible:
 			$CP3.show_Round_Score(5, p3Score)
 			if updateWins:
-				pass
+				print("Updating P3 Wins")
+				print ("1 == " + str(winningPlayer) + ", " + str(p3Score))
+				p3.updateStats_RoundOver(3 == winningPlayer, p1Score)
 		if $CP4.visible:
 			$CP4.show_Round_Score(5, p4Score)
 			if updateWins:
-				pass
+				print("Updating P4 Wins")
+				print ("1 == " + str(winningPlayer) + ", " + str(p4Score))
+				p4.updateStats_RoundOver(4 == winningPlayer, p1Score)
 		if roundNumber > DATABANK.numRounds:
 			currentState = GAMESTATE.GAMEWIN
 			$DEBUG_LABEL.text = "Game Over!"
