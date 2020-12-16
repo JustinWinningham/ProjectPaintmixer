@@ -5,7 +5,7 @@ var isP1Active = false
 var isP2Active = false
 var isP3Active = false
 var isP4Active = false
-var numRounds = 4
+var numRounds = 1
 
 var countdownTime = 4
 var showBaseTime = 4

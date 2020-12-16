@@ -12,3 +12,5 @@ func _ready():
 	$DBL6.text = str("Hat Unlocks: ", str(PROFILEHANDLER.p1Profile.hatUnlocks))
 	$DBL7.text = str("Rounds Played: ", str(PROFILEHANDLER.p1Profile.getStat_RoundsPlayed()))
 	$DBL8.text = str("Average Round Score: ", str(PROFILEHANDLER.p1Profile.getStat_AverageScore()))
+	$DBL9.text = str("Round Wins: ", str(PROFILEHANDLER.p1Profile.getStat_RoundWins()))
+	$DBL10.text = str("Pefect Guesses: ", str(PROFILEHANDLER.p1Profile.getStat_PerfectGuesses()))

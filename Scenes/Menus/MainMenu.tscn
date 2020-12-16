@@ -136,3 +136,27 @@ text = "test"
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="DBL9" type="Label" parent="."]
+anchor_right = 0.008
+anchor_bottom = 0.013
+margin_left = 185.614
+margin_top = 461.492
+margin_right = 306.254
+margin_bottom = 484.452
+text = "test"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="DBL10" type="Label" parent="."]
+anchor_right = 0.008
+anchor_bottom = 0.013
+margin_left = 186.208
+margin_top = 477.547
+margin_right = 306.848
+margin_bottom = 500.507
+text = "test"
+__meta__ = {
+"_edit_use_anchors_": false
+}

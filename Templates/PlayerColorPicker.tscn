@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://Scripts/PlayerColorPicker.gd" type="Script" id=1]
+[ext_resource path="res://Art/icon.png" type="Texture" id=2]
 
 [sub_resource type="Theme" id=1]
 
@@ -25,10 +26,9 @@ __meta__ = {
 }
 
 [node name="ColorPicker" type="ColorPicker" parent="PickedColorSquare"]
-margin_left = 8.0
-margin_top = 48.0
-margin_right = 316.0
-margin_bottom = 460.0
+margin_top = 50.0
+margin_right = 308.0
+margin_bottom = 462.0
 theme = SubResource( 1 )
 edit_alpha = false
 presets_enabled = false
@@ -64,5 +64,39 @@ __meta__ = {
 }
 
 [node name="RoundScoreTimer" type="Timer" parent="."]
+
+[node name="RL" type="Label" parent="."]
+margin_left = 22.2724
+margin_top = -81.9627
+margin_right = 62.2724
+margin_bottom = -67.9627
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="GL" type="Label" parent="."]
+margin_left = 89.0899
+margin_top = -77.5082
+margin_right = 129.09
+margin_bottom = -63.5082
+
+[node name="BL" type="Label" parent="."]
+margin_left = 185.307
+margin_top = -74.8355
+margin_right = 225.307
+margin_bottom = -60.8355
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MainBodyClicker" type="Sprite" parent="."]
+position = Vector2( 149.426, 179.445 )
+scale = Vector2( 0.1, 0.1 )
+texture = ExtResource( 2 )
+
+[node name="SideBodyClicker" type="Sprite" parent="."]
+position = Vector2( 300, 150 )
+scale = Vector2( 0.1, 0.1 )
+texture = ExtResource( 2 )
 [connection signal="color_changed" from="PickedColorSquare/ColorPicker" to="." method="_on_ColorPicker_color_changed"]
 [connection signal="timeout" from="RoundScoreTimer" to="." method="_on_RoundScoreTimer_timeout"]

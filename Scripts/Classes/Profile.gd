@@ -62,9 +62,14 @@ func getUnlockedHats():
 func getStat_RoundsPlayed():
 	return stat_RoundsPlayed
 
+func getStat_RoundWins():
+	return stat_RoundWins
 
 func getStat_AverageScore():
 	return stat_AverageAccuracy
+
+func getStat_PerfectGuesses():
+	return stat_PerfectGuesses
 
 
 func save():
@@ -113,6 +118,7 @@ func clean():
 	stat_RoundWins = 0
 	stat_AverageAccuracy = 0 # aka round score
 	stat_PerfectGuesses = 0
+	return true
 
 
 func delete():
@@ -123,17 +129,17 @@ func delete():
 
 func _form_save():
 	var save_dict = {
-		"saveVersion" : saveVersion,
-		"profileName" : profileName,
-		"profileSettings" : profileSettings,
-		"hatUnlocks" : hatUnlocks,
-		"characterOutfit" : characterOutfit,
-		"stat_GamesPlayed" : stat_GamesPlayed,
-		"stat_RoundsPlayed" : stat_RoundsPlayed,
-		"stat_GameWins" : stat_GameWins,
-		"stat_RoundWins" : stat_RoundWins,
-		"stat_AverageAccuracy" : stat_AverageAccuracy,
-		"stat_PerfectGuesses" : stat_PerfectGuesses
+		"saveVersion" : saveVersion, #
+		"profileName" : profileName, #
+		"profileSettings" : profileSettings, #
+		"hatUnlocks" : hatUnlocks, #
+		"characterOutfit" : characterOutfit, #
+		"stat_GamesPlayed" : stat_GamesPlayed, #
+		"stat_RoundsPlayed" : stat_RoundsPlayed, #
+		"stat_GameWins" : stat_GameWins, #
+		"stat_RoundWins" : stat_RoundWins, #
+		"stat_AverageAccuracy" : stat_AverageAccuracy, #
+		"stat_PerfectGuesses" : stat_PerfectGuesses #
 	}
 	return save_dict
 
@@ -155,21 +161,22 @@ func updateStats_GameOver(didWin: bool):
 func updateStats_RoundOver(didWin: bool, roundScore: int):
 	if didWin:
 		stat_RoundWins += 1
-		if stat_RoundWins > 50:
+		if stat_RoundWins > 10:
 			unlock_hat(2)
+		if stat_RoundWins > 50:
+			unlock_hat(3) # unlock 50 round wins hat
 		if stat_RoundWins > 100:
-			unlock_hat(3) # unlock 100 round wins hat
+			unlock_hat(4) # unlock 100 round wins hat
 		if stat_RoundWins > 500:
-			unlock_hat(4) # unlock 500 round wins hat
+			unlock_hat(5) # unlock 500 round wins hat
 		if stat_RoundWins > 1000:
-			unlock_hat(5) # unlock 1000 round wins hat
-		if stat_RoundWins > 5000:
-			unlock_hat(6) # unlock 5000 round wins hat
+			unlock_hat(6) # unlock 1000 round wins hat
 	if roundScore == 765:
 		stat_PerfectGuesses += 1
 		unlock_hat(1) # unlock perfect guess hat
 	stat_AverageAccuracy = (stat_RoundsPlayed * stat_AverageAccuracy + roundScore) / (stat_RoundsPlayed + 1)
 	stat_RoundsPlayed += 1
+	print("Updating rounds played to: " + str(stat_RoundsPlayed))
 	if stat_RoundsPlayed > 10:
 		unlock_hat(7)
 	if stat_RoundsPlayed > 100:
