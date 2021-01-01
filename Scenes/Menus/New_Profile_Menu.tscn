@@ -10,7 +10,7 @@ script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
-scenePath = "res://Scenes/Menus/Profile_Picker.tscn"
+scenePath = "res://Scenes/Menus/Profile_Picker_Main.tscn"
 
 [node name="Name_Input" type="TextEdit" parent="."]
 margin_left = 90.7622

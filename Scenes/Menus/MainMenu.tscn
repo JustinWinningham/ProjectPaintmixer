@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Scripts/ButtonChangeScene.gd" type="Script" id=1]
 [ext_resource path="res://Scripts/QuitGame.gd" type="Script" id=2]
 [ext_resource path="res://Scripts/MainMenuController.gd" type="Script" id=3]
+[ext_resource path="res://Art/menu background.png" type="Texture" id=4]
 
 [node name="MainMenu" type="Control"]
 anchor_right = 1.0
@@ -12,11 +13,16 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="Background" type="Sprite" parent="."]
+position = Vector2( 960, 540 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 4 )
+
 [node name="Singleplayer_Button" type="Button" parent="."]
-margin_left = 450.0
-margin_top = 133.0
-margin_right = 597.0
-margin_bottom = 166.0
+margin_left = 801.308
+margin_top = 886.973
+margin_right = 1052.31
+margin_bottom = 974.973
 text = "Local Play"
 script = ExtResource( 1 )
 __meta__ = {
@@ -25,10 +31,10 @@ __meta__ = {
 scenePath = "res://Scenes/Menus/Pregame_Lobby_Local.tscn"
 
 [node name="QuitButton" type="Button" parent="."]
-margin_left = 447.0
-margin_top = 476.0
-margin_right = 604.0
-margin_bottom = 521.0
+margin_left = 1625.12
+margin_top = 944.283
+margin_right = 1782.12
+margin_bottom = 989.283
 text = "Quit"
 script = ExtResource( 2 )
 __meta__ = {
@@ -36,58 +42,121 @@ __meta__ = {
 }
 
 [node name="ProfilesButton" type="Button" parent="."]
-margin_left = 415.031
-margin_top = 379.072
-margin_right = 629.031
-margin_bottom = 414.072
+margin_left = 1499.92
+margin_top = 478.662
+margin_right = 1713.92
+margin_bottom = 513.661
 text = "Profiles"
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
-scenePath = "res://Scenes/Menus/Profile_Picker.tscn"
+scenePath = "res://Scenes/Menus/Profile_Picker_Main.tscn"
 
 [node name="DBL1" type="Label" parent="."]
 anchor_right = 0.008
 anchor_bottom = 0.013
-margin_left = 132.031
-margin_top = 149.881
-margin_right = 252.671
-margin_bottom = 172.841
+margin_left = 187.468
+margin_top = 325.183
+margin_right = 308.108
+margin_bottom = 348.143
 text = "test"
 
 [node name="DBL2" type="Label" parent="."]
 anchor_right = 0.008
 anchor_bottom = 0.013
-margin_left = 131.401
-margin_top = 166.26
-margin_right = 252.041
-margin_bottom = 189.22
+margin_left = 186.838
+margin_top = 341.562
+margin_right = 307.478
+margin_bottom = 364.522
 text = "test"
 
 [node name="DBL3" type="Label" parent="."]
 anchor_right = 0.008
 anchor_bottom = 0.013
-margin_left = 130.771
-margin_top = 183.269
-margin_right = 251.411
-margin_bottom = 206.229
+margin_left = 186.208
+margin_top = 358.571
+margin_right = 306.848
+margin_bottom = 381.531
 text = "test"
 
 [node name="DBL4" type="Label" parent="."]
 anchor_right = 0.008
 anchor_bottom = 0.013
-margin_left = 130.771
-margin_top = 199.018
-margin_right = 251.411
-margin_bottom = 221.978
+margin_left = 186.208
+margin_top = 374.32
+margin_right = 306.848
+margin_bottom = 397.28
 text = "test"
 
 [node name="DBL5" type="Label" parent="."]
 anchor_right = 0.008
 anchor_bottom = 0.013
-margin_left = 130.771
-margin_top = 216.027
-margin_right = 251.411
-margin_bottom = 238.987
+margin_left = 186.208
+margin_top = 391.329
+margin_right = 306.848
+margin_bottom = 414.289
 text = "test"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="DBL6" type="Label" parent="."]
+anchor_right = 0.008
+anchor_bottom = 0.013
+margin_left = 186.208
+margin_top = 409.167
+margin_right = 306.848
+margin_bottom = 432.127
+text = "test"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="DBL7" type="Label" parent="."]
+anchor_right = 0.008
+anchor_bottom = 0.013
+margin_left = 186.803
+margin_top = 426.411
+margin_right = 307.443
+margin_bottom = 449.371
+text = "test"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="DBL8" type="Label" parent="."]
+anchor_right = 0.008
+anchor_bottom = 0.013
+margin_left = 185.019
+margin_top = 445.438
+margin_right = 305.659
+margin_bottom = 468.398
+text = "test"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="DBL9" type="Label" parent="."]
+anchor_right = 0.008
+anchor_bottom = 0.013
+margin_left = 185.614
+margin_top = 461.492
+margin_right = 306.254
+margin_bottom = 484.452
+text = "test"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="DBL10" type="Label" parent="."]
+anchor_right = 0.008
+anchor_bottom = 0.013
+margin_left = 186.208
+margin_top = 477.547
+margin_right = 306.848
+margin_bottom = 500.507
+text = "test"
+__meta__ = {
+"_edit_use_anchors_": false
+}

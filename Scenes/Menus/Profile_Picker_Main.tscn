@@ -1,9 +1,9 @@
 [gd_scene load_steps=5 format=2]
 
-[ext_resource path="res://Scripts/Profile_Picker.gd" type="Script" id=1]
+[ext_resource path="res://Scripts/DeleteProfileBtn.gd" type="Script" id=1]
 [ext_resource path="res://Scripts/ActiveProfileLabel.gd" type="Script" id=2]
-[ext_resource path="res://Scripts/ButtonChangeScene.gd" type="Script" id=3]
-[ext_resource path="res://Scripts/DeleteProfileBtn.gd" type="Script" id=4]
+[ext_resource path="res://Scripts/Profile_Picker.gd" type="Script" id=3]
+[ext_resource path="res://Scripts/ButtonChangeScene.gd" type="Script" id=4]
 
 [node name="Profile_Picker" type="Control"]
 anchor_right = 1.0
@@ -16,7 +16,7 @@ __meta__ = {
 margin_right = 105.0
 margin_bottom = 22.0
 text = "New Profile"
-script = ExtResource( 3 )
+script = ExtResource( 4 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -28,7 +28,7 @@ margin_top = 1.88776
 margin_right = 364.565
 margin_bottom = 23.8878
 text = "Back"
-script = ExtResource( 3 )
+script = ExtResource( 4 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -39,7 +39,7 @@ margin_left = 130.108
 margin_right = 235.108
 margin_bottom = 22.0
 text = "Delete Profile"
-script = ExtResource( 4 )
+script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -58,18 +58,21 @@ margin_right = 200.0
 margin_bottom = 300.0
 rect_min_size = Vector2( 200, 300 )
 custom_constants/separation = 5
-script = ExtResource( 1 )
+script = ExtResource( 3 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="CurrentProfile" type="Label" parent="."]
-margin_left = 325.692
-margin_top = 53.6652
-margin_right = 525.692
-margin_bottom = 67.6652
-text = "CURRENT PROFILE: DEFAULT"
+margin_left = 406.865
+margin_top = 49.8897
+margin_right = 606.865
+margin_bottom = 63.8897
+text = "CURRENT PROFILE: NONE"
 script = ExtResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="StatContainer" type="Node2D" parent="."]
+position = Vector2( 424.745, 112.321 )

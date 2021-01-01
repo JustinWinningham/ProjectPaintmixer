@@ -1,14 +1,11 @@
 extends Node
 
-# game state machine
 enum GAMESTATE {IDLE, ENTERSCENE, LEAVESCENE, POURING, MIXING, WIN, LOSE}
 var STATE
-
 var did_find_settings = false
-#var profile_loaded = false
-#var default_profile = ""
-var generic_setting_1 = "gs1"
+var max_add_volume = 100
 var generic_setting_2  = "gs2"
+
 
 func _ready():
 	STATE = GAMESTATE.IDLE
@@ -18,18 +15,20 @@ func _ready():
 		print("Settings loaded successfully!")
 	pass
 
+
 func _process(delta):
 	randomize()
 	pass
 
+
 func form_save():
 	var save_dict = {
-#		"default_profile" : default_profile,
-		"generic_setting_1" : generic_setting_1,
+		"max_add_volume" : max_add_volume,
 		"generic_setting_2" :generic_setting_2
 	}
 	return save_dict
-	
+
+
 func save_settings():
 	var save_file = File.new()
 	save_file.open(str("user://settings.txt"), File.WRITE)
@@ -37,11 +36,12 @@ func save_settings():
 	save_file.close()
 	return true
 
+
 func load_settings():
 	var save_file = File.new()
 	if not save_file.file_exists(str("user://settings.txt")):
-		print("Unable to find existing settings file")
-		return false
+		print("Unable to find existing settings file, creating now.")
+		save_settings()
 	save_file.open(str("user://settings.txt"), File.READ)
 	var settings_data = {}
 	settings_data = save_file.get_var()
