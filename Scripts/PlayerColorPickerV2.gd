@@ -7,6 +7,7 @@ onready var PlayerName = $PickedColorSquare/PlayerName
 
 var playerScore = 0
 
+
 func _ready():
 	$PickedColorSquare/PlayerRoundScore.visible = false
 	match playerNumber:
@@ -19,9 +20,6 @@ func _ready():
 			4:
 				PlayerName.text = PROFILEHANDLER.p4Profile.getName()
 
-func _on_ColorPicker_color_changed(color):
-	pass
-	$PickedColorSquare.color = color
 
 func show_Round_Score(time, score):
 	$RoundScoreTimer.start(time)
@@ -31,47 +29,39 @@ func show_Round_Score(time, score):
 	$PickedColorSquare/PlayerRoundScore.visible = true
 	# TODO: Put more flare here for amazing guesses / huge whiffs / point thresholds
 
-func _on_RoundScoreTimer_timeout():
+
+func _on_RoundScoreVisibilityTimer_timeout():
 	$PickedColorSquare/PlayerRoundScore.text = ""
 	$PickedColorSquare/PlayerRoundScore.visible = false
 
+
 func get_Picked_Colors():
-	var colors = [0.0,0.0,0.0]
-	colors[0] = $PickedColorSquare/ColorPicker.color.r8
-	colors[1] = $PickedColorSquare/ColorPicker.color.g8
-	colors[2] = $PickedColorSquare/ColorPicker.color.b8
+	var colors = [1,1,1]
+	# TODO: GET THE COLOR CUROR COLOR
+#	get_viewport().queue_screen_capture()
+#	var image = get_viewport().get_screen_capture()
+	var cursorX = $ColorPicker/ColorCursor.global_position.x
+	var cursorY = $ColorPicker/ColorCursor.global_position.y
+#	print(image.get_pixel(cursorX, cursorY))
+	get_viewport().set_clear_mode(Viewport.CLEAR_MODE_ONLY_NEXT_FRAME)
+	yield(VisualServer, "frame_post_draw")
+	var img = get_viewport().get_texture().get_data()
+	img.lock()
+	print(img.get_pixel(cursorX, cursorY))
+	img.unlock()
 	return colors
-
-
-func _fakeClickCP():
-	var a = InputEventMouseButton.new()
-	var b = InputEventMouseButton.new()
-	a.set_button_index(1)
-	b.set_button_index(1)
-	a.position.x = $MainBodyClicker.get_global_position().x
-	a.position.y = $MainBodyClicker.get_global_position().y
-	b.position.x = $SideBodyClicker.get_global_position().x
-	b.position.y = $SideBodyClicker.get_global_position().y
-	# NOTE: We we have to press AND release each button in sequence, otherwise the colorpicker will
-	# not consider the first click to have ended, and drag the clicked mouse to the second location
-	a.set_pressed(true)
-	Input.parse_input_event(a)
-	a.set_pressed(false)
-	Input.parse_input_event(a)
-	
-	b.set_pressed(true)
-	Input.parse_input_event(b)
-	b.set_pressed(false)
-	Input.parse_input_event(b)
 
 
 func _process(delta):
 	var didMove = false
 	var colors = get_Picked_Colors()
-	$RL.text = str(colors[0])
-	$GL.text = str(colors[1])
-	$BL.text = str(colors[2])
-
+#	$RL.text = str(colors[0])
+#	$GL.text = str(colors[1])
+#	$BL.text = str(colors[2])
+	$PickedColorSquare.color.r8 = colors[0]
+	$PickedColorSquare.color.g8 = colors[1]
+	$PickedColorSquare.color.b8 = colors[2]
+	
 	if Input.is_action_pressed("cp_main_up_%s" % playerNumber) && $MainBodyClicker.position.y > 55:
 		didMove = true
 		$MainBodyClicker.position.y -= 1
@@ -90,12 +80,3 @@ func _process(delta):
 	if Input.is_action_pressed("cp_side_up_%s" % playerNumber) && $SideBodyClicker.position.y < 300:
 		didMove = true
 		$SideBodyClicker.position.y += 1
-	if didMove:
-		print("clicking!")
-		call_deferred("_fakeClickCP")
-		pass # update the color of the colorbox and the preview
-
-	colors = get_Picked_Colors()
-	$PickedColorSquare.color.r8 = colors[0]
-	$PickedColorSquare.color.g8 = colors[1]
-	$PickedColorSquare.color.b8 = colors[2]

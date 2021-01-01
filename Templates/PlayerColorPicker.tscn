@@ -26,9 +26,10 @@ __meta__ = {
 }
 
 [node name="ColorPicker" type="ColorPicker" parent="PickedColorSquare"]
-margin_top = 50.0
-margin_right = 308.0
-margin_bottom = 462.0
+margin_left = 4.0
+margin_top = 54.0
+margin_right = 312.0
+margin_bottom = 466.0
 theme = SubResource( 1 )
 edit_alpha = false
 presets_enabled = false
@@ -79,6 +80,9 @@ margin_left = 89.0899
 margin_top = -77.5082
 margin_right = 129.09
 margin_bottom = -63.5082
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="BL" type="Label" parent="."]
 margin_left = 185.307

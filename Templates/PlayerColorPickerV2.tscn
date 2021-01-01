@@ -1,0 +1,73 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Scripts/PlayerColorPickerV2.gd" type="Script" id=1]
+[ext_resource path="res://Art/icon.png" type="Texture" id=2]
+
+[sub_resource type="StreamTexture" id=1]
+flags = 4
+load_path = "res://.import/spectrum_chart.jpg-7004699760cf2ec8fa89dc29b4c18334.stex"
+
+[node name="PlayerColorPicker" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PickedColorSquare" type="ColorRect" parent="."]
+margin_right = 300.0
+margin_bottom = 40.0
+color = Color( 0.721569, 0.133333, 0.133333, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PlayerName" type="Label" parent="PickedColorSquare"]
+margin_right = 40.0
+margin_bottom = 14.0
+text = "NAME"
+
+[node name="PlayerRoundScore" type="Label" parent="PickedColorSquare"]
+margin_left = 198.003
+margin_top = -16.9462
+margin_right = 292.003
+margin_bottom = -2.94619
+text = "ROUND SCORE"
+
+[node name="PlayerTotalScore" type="Label" parent="PickedColorSquare"]
+margin_left = 203.949
+margin_top = 5.05414
+margin_right = 289.949
+margin_bottom = 19.0541
+text = "TOTAL SCORE"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="RoundScoreVisibilityTimer" type="Timer" parent="."]
+
+[node name="BrightnessSlider" type="ColorRect" parent="."]
+margin_left = 305.0
+margin_right = 320.0
+margin_bottom = 230.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BrightnessCursor" type="Sprite" parent="BrightnessSlider"]
+modulate = Color( 0.854902, 0.882353, 0, 1 )
+position = Vector2( 7.5, 60 )
+scale = Vector2( 0.25, 0.05 )
+texture = ExtResource( 2 )
+
+[node name="ColorPicker" type="Sprite" parent="."]
+position = Vector2( 150, 140 )
+scale = Vector2( 0.5, 0.5 )
+texture = SubResource( 1 )
+
+[node name="ColorCursor" type="Sprite" parent="ColorPicker"]
+position = Vector2( -27.9584, -28.1968 )
+scale = Vector2( 0.126301, 0.118851 )
+texture = ExtResource( 2 )
+[connection signal="timeout" from="RoundScoreVisibilityTimer" to="." method="_on_RoundScoreVisibilityTimer_timeout"]
